@@ -19,3 +19,8 @@ $ cd web/
 $ npm install
 $ npm run dev
 ```
+
+start mongodb
+```
+"C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe" --dbpath="c:\Datos\db"
+```
