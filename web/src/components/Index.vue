@@ -4,6 +4,9 @@
       <li>
         <router-link :to="{ name: 'Posts' }">Posts</router-link>
       </li>
+            <li>
+        <router-link :to="{ name: 'Cliente' }">Clientes</router-link>
+      </li>
     </ul>
     <div class="">
       <router-view></router-view>

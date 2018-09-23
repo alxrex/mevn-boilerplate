@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-link :to="{ name: 'Index', params: {} }"><h1>Mevn boilerplate</h1></router-link>
+    <router-link :to="{ name: 'Index', params: {} }"><h1>Catalogos</h1></router-link>
     <router-view/>
   </div>
 </template>
