@@ -11,7 +11,7 @@ export default {
 }
 </script>
 
-<style>
+<style>/*
 * {
   box-sizing: border-box;
 }
@@ -117,5 +117,6 @@ a.link {
   border: none;
   cursor: pointer;
   margin: 8px 0;
-}
+}*/
+textarea{ width:80%; }
 </style>

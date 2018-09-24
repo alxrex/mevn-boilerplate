@@ -3,7 +3,7 @@
     <div class="col-50">
       <h1>Cliente</h1>
       <div class="">
-        <router-link :to="{ name: 'CreateCliente'}">Create cliente</router-link>
+        <router-link :to="{ name: 'CreateCliente'}" v-b-modal.modal1>Create cliente</router-link>
       </div>
       <div class="table-wrap">
         <table>
@@ -18,7 +18,7 @@
             <td>{{ cliente.telefono }}</td>
             <td>{{ cliente.direccion }}</td>
             <td align="center">
-              <router-link v-bind:to="{ name: 'EditCliente', params: { clienteId: cliente._id } }">Edit</router-link> |
+              <router-link v-bind:to="{ name: 'EditCliente', params: { clienteId: cliente._id } }" v-b-modal.modal1>Edit</router-link> |
               <a href="#" @click="deleteCliente(cliente._id)">Delete</a>
             </td>
 
@@ -27,13 +27,21 @@
       </div>
     </div>
     <div class="col-50">
-      <router-view v-on:created="onCreated"></router-view>
+      <div>
+  <!--<b-btn v-b-modal.modal1>Launch demo modal</b-btn>-->
+  <!-- Modal Component -->
+  <b-modal id="modal1" title="Bootstrap-Vue" size="lg" hide-footer>
+    <p class="my-4">Cliente</p>
+    <router-view v-on:created="onCreated"></router-view>
+  </b-modal>
+</div>
     </div>
   </div>
 </template>
 
 <script>
 import ClienteService from '@/services/ClienteService'
+
 export default {
   name: 'clientes',
   data () {
@@ -57,11 +65,15 @@ export default {
     },
     onCreated () {
       this.getCliente()
+      this.hideModal()
     },
     trClass (id) {
       return {
         selected: this.$route.params.clienteId === id
       }
+    },
+    hideModal () {
+      this.$refs.modal1.hide()
     }
   }
 }
