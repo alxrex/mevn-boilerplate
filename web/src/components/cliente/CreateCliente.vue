@@ -1,5 +1,5 @@
 <template>
-  <div class="posts">
+  <div class="cliente">
     <h1>Nuevo Cliente</h1>
       <div class="form">
         <div>

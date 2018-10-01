@@ -1,0 +1,9 @@
+{
+    "nombre": "Mesa",
+    "data": [
+        {"nombre": "nombre", "tipo": "String" },
+        {"nombre": "x", "tipo": "Integer" },
+        {"nombre": "y", "tipo": "Integer" }
+    ]
+    
+}
