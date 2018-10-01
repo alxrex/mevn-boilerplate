@@ -1,42 +1,35 @@
-// file: src/controllers/proveedor.js
+// file: src/controllers/mesa.js
 
-const Proveedor = require('../models/proveedor')
+const Mesa = require('../models/mesa')
 
 module.exports = {
-  create (nombre, telefono, direccion, cruza, email, cp, created, created_by) {
-    return new Proveedor({
+  create (nombre,x,y) {
+    return new Mesa({
       nombre,
-      telefono,
-      direccion,
-      cruza,
-      email,
-      cp,
-      created,
-      created_by
+			x,
+			y
     }).save()
   },
   getById (id) {
-    return Proveedor.findById(id)
+    return Mesa.findById(id)
   },
   listAll (mapId) {
-    return Proveedor.find({})
+    return Mesa.find({})
   },
   removeById (id) {
-    return Proveedor.remove({_id: id})
+    return Mesa.remove({_id: id})
   },
   updateById (id, data) {
-    return Proveedor.findById(id).then(proveedor => {
+    return Mesa.findById(id).then(mesa => {
 
-      proveedor.nombre     = data.nombre
-      proveedor.telefono   = data.telefono
-      proveedor.direccion  = data.direccion
-      proveedor.cruza      = data.cruza
-      proveedor.email      = data.email
-      proveedor.cp         = data.cp
-      proveedor.modified    = data.modified
-      proveedor.modified_by = data.modified_by
+      mesa.nombre = data.nombre
+			mesa.x = data.x
+			mesa.y = data.y
+			
+      mesa.modified    = data.modified
+      mesa.modified_by = data.modified_by
 
-      return proveedor.save()
+      return mesa.save()
     })
   }
 }

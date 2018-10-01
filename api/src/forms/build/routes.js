@@ -1,6 +1,6 @@
-// file: src/routes/cliente.js
+// file: src/routes/mesa.js
 
-const controller = require("../controllers/cliente")
+const controller = require("../controllers/mesa")
 
 function onError(res, message) {
   res.status(400).send({ message })
@@ -9,59 +9,65 @@ function onError(res, message) {
 module.exports = {
   delete: [
     {
-      pattern: '/cliente/:id',
+      pattern: '/mesa/:id',
       handler (req, res) {
         const id = req.params.id
         controller.removeById(id)
-          .then(cliente => res.send(cliente))
+          .then(mesa => res.send(mesa))
           .catch(onError.bind(this, res))
       }
     }
   ],
   get: [
     {
-      pattern: '/cliente',
+      pattern: '/mesa',
       handler (req, res) {
         controller.listAll()
-          .then(cliente => res.send(cliente))
+          .then(mesa => res.send(mesa))
           .catch(onError.bind(this, res))
       }
     },
     {
-      pattern: '/cliente/:id',
+      pattern: '/mesa/:id',
       handler (req, res) {
         const id = req.params.id
         controller.getById(id)
-          .then(cliente => res.send(cliente))
+          .then(mesa => res.send(mesa))
           .catch(onError.bind(this, res))
       }
     }
   ],
   post: [
     {
-      pattern: '/cliente',
+      pattern: '/mesa',
       handler (req, res) {
-        :constDataPostAssignation
+        const nombre				= req.body.nombre
+				const x				= req.body.x
+				const y				= req.body.y
+				
         const created   = new Date()
         const created_by = 'Backend'
         controller.create(:functionParameters, created, created_by)
-          .then(cliente => res.send(cliente))
+          .then(mesa => res.send(mesa))
           .catch(onError.bind(this, res))
       }
     }
   ],
   put: [
     {
-      pattern: '/cliente/:id',
+      pattern: '/mesa/:id',
       handler (req, res) {
         const id = req.params.id
         const data = {
-          :constDataPutAssignation
+          nombre				: req.body.nombre,
+				x				: req.body.x,
+				y				: req.body.y,
+				
           modified  : new Date(),
           modified_by : "Backend"
         }
         controller.updateById(id, data)
-          .then(cliente => res.send(cliente)) 
+          .then(mesa => res.send(mesa)) 
           .catch(onError.bind(this, res))
       }
     }
