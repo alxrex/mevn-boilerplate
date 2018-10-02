@@ -34,12 +34,12 @@ for(var exKey in configuration.data) {
   
   campos.push(configuration.data[exKey].nombre);
   tipos.push(configuration.data[exKey].tipo); 
-  //  TODO: Validar Tipos String, Integer, Date,...
+  //  TODO: Validar Tipos String, Number, Boolean, null, undefined...
   
-console.log("# "+exKey+", Property= "+ configuration.data[exKey].nombre + " : " + configuration.data[exKey].tipo ); 
+console.log("#"+exKey+" Property => "+ configuration.data[exKey].nombre + " : " + configuration.data[exKey].tipo ); 
 
 }
-var campos_str = campos.join();
+var functionParameters = campos.join();
 
 if(configuration.nombre!='')
 {
@@ -93,7 +93,7 @@ fs.readFile(template_controller, 'utf8', function (err,data) {
   var result = data.replace(/Cliente/g, TAG );  //CamelCase
   result = result.replace(/cliente/g, TAG.toLowerCase()); //lowercase
   // Replace :functionParameters
-  result = result.replace(/:functionParameters/g, campos_str);
+  result = result.replace(/:functionParameters/g, functionParameters);
   result = result.replace(/:verticalParameters/g, campos.join(",\n\t\t\t"));
   result = result.replace(/:verticalUpdate/g, verticalUpdateStr);
   
@@ -117,7 +117,7 @@ fs.readFile(template_routes, 'utf8', function (err,data) {
   result = result.replace(/cliente/g, TAG.toLowerCase()); //lowercase
   result = result.replace(/:constDataPostAssignation/g, constDataPostAssignation);
   result = result.replace(/:constDataPutAssignation/g, constDataPutAssignation);
-  
+  result = result.replace(/:functionParameters/g, functionParameters);
 
 
   fs.writeFile(target_file_routes, result, 'utf8', function (err) {
@@ -147,3 +147,4 @@ fs.readFile(template_model, 'utf8', function (err,data) {
 //  TODO: Revisar FrontEnd Files para aplicar la misma
 
 console.log('Build Completed!!!  (Check folder: forms/build/ )');
+console.log('...Add the parameter in /src/routes/route.js to the new TAG...');

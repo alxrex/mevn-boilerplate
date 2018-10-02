@@ -2,8 +2,8 @@
     "nombre": "Mesa",
     "data": [
         {"nombre": "nombre", "tipo": "String" },
-        {"nombre": "x", "tipo": "Integer" },
-        {"nombre": "y", "tipo": "Integer" }
+        {"nombre": "x", "tipo": "Number" },
+        {"nombre": "y", "tipo": "Number" }
     ]
     
 }

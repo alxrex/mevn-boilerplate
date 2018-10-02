@@ -47,7 +47,7 @@ module.exports = {
 				
         const created   = new Date()
         const created_by = 'Backend'
-        controller.create(:functionParameters, created, created_by)
+        controller.create(nombre,x,y, created, created_by)
           .then(mesa => res.send(mesa))
           .catch(onError.bind(this, res))
       }
