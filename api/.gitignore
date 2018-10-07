@@ -1,4 +1,6 @@
 data/img/*
+src/forms/build/
+src/forms/tag.json
 
 .DS_Store
 node_modules/

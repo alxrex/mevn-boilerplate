@@ -1,7 +1,8 @@
 const routers = [
   require('./post'),
   require('./cliente'),
-  require('./mesa')
+  require('./mesa'),
+  require('./usuario')
 ]
 
 const routes = {

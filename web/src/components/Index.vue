@@ -4,7 +4,7 @@
       <li>
         <router-link :to="{ name: 'Posts' }">Posts</router-link>
       </li>
-            <li>
+      <li>
         <router-link :to="{ name: 'Cliente' }">Clientes</router-link>
       </li>
     </ul>

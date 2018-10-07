@@ -1,6 +1,6 @@
-// file: src/routes/mesa.js
+// file: src/routes/usuario.js
 
-const controller = require("../controllers/mesa")
+const controller = require("../controllers/usuario")
 
 function onError(res, message) {
   res.status(400).send({ message })
@@ -9,65 +9,63 @@ function onError(res, message) {
 module.exports = {
   delete: [
     {
-      pattern: '/mesa/:id',
+      pattern: '/usuario/:id',
       handler (req, res) {
         const id = req.params.id
         controller.removeById(id)
-          .then(mesa => res.send(mesa))
+          .then(usuario => res.send(usuario))
           .catch(onError.bind(this, res))
       }
     }
   ],
   get: [
     {
-      pattern: '/mesa',
+      pattern: '/usuario',
       handler (req, res) {
         controller.listAll()
-          .then(mesa => res.send(mesa))
+          .then(usuario => res.send(usuario))
           .catch(onError.bind(this, res))
       }
     },
     {
-      pattern: '/mesa/:id',
+      pattern: '/usuario/:id',
       handler (req, res) {
         const id = req.params.id
         controller.getById(id)
-          .then(mesa => res.send(mesa))
+          .then(usuario => res.send(usuario))
           .catch(onError.bind(this, res))
       }
     }
   ],
   post: [
     {
-      pattern: '/mesa',
+      pattern: '/usuario',
       handler (req, res) {
-        const nombre				= req.body.nombre
-				const x				= req.body.x
-				const y				= req.body.y
-				
-        const created   = new Date()
-        const created_by = 'Backend'
-        controller.create(nombre,x,y, created, created_by)
-          .then(mesa => res.send(mesa))
+        const nombre			= req.body.nombre
+				const email				= req.body.email
+				const password		= req.body.password
+        const created     = new Date()
+        const created_by  = 'Backend'
+        controller.create(nombre,email,password, created, created_by)
+          .then(usuario => res.send(usuario))
           .catch(onError.bind(this, res))
       }
     }
   ],
   put: [
     {
-      pattern: '/mesa/:id',
+      pattern: '/usuario/:id',
       handler (req, res) {
         const id = req.params.id
         const data = {
-          nombre				: req.body.nombre,
-				x				: req.body.x,
-				y				: req.body.y,
-				
-          modified  : new Date(),
+          nombre			: req.body.nombre,
+				  email				: req.body.email,
+				  password		: req.body.password,
+          modified    : new Date(),
           modified_by : "Backend"
         }
         controller.updateById(id, data)
-          .then(mesa => res.send(mesa)) 
+          .then(usuario => res.send(usuario)) 
           .catch(onError.bind(this, res))
       }
     }
